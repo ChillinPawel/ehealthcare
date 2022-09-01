@@ -1,14 +1,11 @@
 package com.chillinpawel.users;
 
+// admin class - TBD
+// Should be able to maintain CommonUsers
 public class Admin implements User{
 
     @Override
-    public String register() {
-        return null;
-    }
-
-    @Override
-    public String logIn() {
+    public String logIn(String password) {
         return null;
     }
 

@@ -2,10 +2,7 @@ package com.chillinpawel.users;
 
 public interface User {
 
-    // should be moved to UserManager or something
-    String register();
-
-    String logIn();
+    String logIn(String password);
 
     String logOut();
 
