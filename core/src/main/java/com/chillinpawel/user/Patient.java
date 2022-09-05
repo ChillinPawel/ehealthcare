@@ -1,4 +1,4 @@
-package com.chillinpawel.users;
+package com.chillinpawel.user;
 
 public class Patient extends CommonUser{
 

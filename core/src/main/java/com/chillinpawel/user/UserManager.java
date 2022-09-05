@@ -1,6 +1,6 @@
-package com.chillinpawel.managers;
+package com.chillinpawel.user;
 
-import com.chillinpawel.users.User;
+import com.chillinpawel.user.User;
 
 public interface UserManager {
     void registerUser(User user);

@@ -1,4 +1,4 @@
-package com.chillinpawel.users;
+package com.chillinpawel.user;
 
 // admin class - TBD
 // Should be able to maintain CommonUsers
