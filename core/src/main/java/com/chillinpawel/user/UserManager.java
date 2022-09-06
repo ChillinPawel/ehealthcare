@@ -1,8 +1,7 @@
 package com.chillinpawel.user;
 
-import com.chillinpawel.user.User;
-
 public interface UserManager {
+    User getUser(String login);
     void registerUser(User user);
     void deleteUser(User user);
 }

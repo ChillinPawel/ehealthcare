@@ -1,26 +1,23 @@
 package com.chillinpawel.user;
 
-// admin class - TBD
-// Should be able to maintain CommonUsers
-public class Admin implements User{
+public class Admin extends User{
 
-    @Override
-    public String logIn(String password) {
-        return null;
+    // constructors
+    public Admin(String login, String email, String password) {
+        super(login, email, password);
     }
 
-    @Override
-    public String logOut() {
-        return null;
+    // public methods
+    public void UnlockUser(User user){
+        if(isLoggedIn() && user.isUserLocked()){
+            user.setUserLocked(false);
+        }
     }
 
-    @Override
-    public String changePassword(String newPassword) {
-        return null;
+    public void LockUser(User user){
+        if(isLoggedIn() && user.isUserLocked()){
+            user.setUserLocked(true);
+        }
     }
 
-    @Override
-    public String restoreLogin() {
-        return null;
-    }
 }

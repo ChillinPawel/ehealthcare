@@ -1,6 +1,8 @@
 package com.chillinpawel.user;
 
-public class Patient extends CommonUser{
+public class Patient extends User {
 
-    // Patient should be able to book, reschedule or cancel a Visit with specific Doctor
+    public Patient(String login, String email, String password) {
+        super(login, email, password);
+    }
 }
