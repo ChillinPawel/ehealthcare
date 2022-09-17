@@ -3,19 +3,21 @@ package com.chillinpawel.user;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
+@Service
 @Slf4j
-public class MemoryUserManager implements UserManager {
+public class UserService {
 
     // fields
-    @Getter
     private final Set<User> users = new HashSet<>();
 
     // constructors
-    public MemoryUserManager() {
+    public UserService() {
 
         // some dummy records for start
         registerUser(new Admin("user1", "admin1@com.pl", "xyzc"));
@@ -25,17 +27,14 @@ public class MemoryUserManager implements UserManager {
     }
 
     // public methods
-    @Override
-    public User getUser(String login) {
-        for(User user : users){
-            if(user.getLogin().equals(login)){
-                return user;
-            }
-        }
-        return null;
+    public Set<User> getAllUsers(){
+        return users;
     }
 
-    @Override
+    public User getUser(String login) throws NoSuchElementException {
+        return users.stream().filter(u -> u.getLogin().equals(login)).findFirst().get();
+    }
+
     public void registerUser(@NonNull User user) {
         if(!users.contains(user)){
             users.add(user);
@@ -45,14 +44,13 @@ public class MemoryUserManager implements UserManager {
         }
     }
 
-    @Override
-    public void deleteUser(User user) {
-        if(users.contains(user)){
-            users.remove(user);
-        } else{
-            // for now just log INFO
-            log.info("User not found in database...");
-        }
+    public void updateUser(@NonNull User user, String login){
+        this.deleteUser(login);
+        this.registerUser(user);
+    }
+
+    public void deleteUser(String login) {
+        users.removeIf(u -> u.getLogin().equals(login));
     }
 
 

@@ -6,13 +6,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
-public class MemoryVisitManager implements VisitManager {
+public class VisitService {
 
     // fields
     private final Set<Visit> visits = new HashSet<>();
 
     // public methods
-    @Override
     public void addVisit(Visit visit) {
         if(!visits.contains(visit)){
             visits.add(visit);
@@ -21,12 +20,11 @@ public class MemoryVisitManager implements VisitManager {
         }
     }
 
-    @Override
     public void updateVisit(Visit visit) {
-
+        this.deleteVisit(visit);
+        this.addVisit(visit);
     }
 
-    @Override
     public void deleteVisit(Visit visit) {
         if(visits.remove(visit)){
             log.info("Visit removed from database");
